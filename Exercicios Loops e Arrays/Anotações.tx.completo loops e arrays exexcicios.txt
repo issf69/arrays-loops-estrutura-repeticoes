@@ -1,0 +1,711 @@
+👣   🛑 comentado
+🔷Fatorial.java
+
+/*
+Faça um programa que calcule o fatorial de um número inteiro fornecido pelo usuário.
+Ex.: 5!=5.4.3.2.1=120
+*/
+import java.util.Scanner;
+
+public class Fatorial {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in); //Abertura da entrada de fluxo de dados através do teclado
+
+        System.out.println("Número: "); //Peça um número
+        int numero = scan.nextInt(); //Entrada de dados, neste caso de um int.
+
+        int multiplicacao = 1; //variável para guardar o valor da multiplicação dos valores.
+
+        System.out.print(numero + "!="); //frase ilustrativo para indicar o fatorial
+
+        //para: variável i = numero, até i maior que 0, diminuimos 1 ao valor de i a cada loop.
+        for(int i = numero; i > 0; i--) {
+            multiplicacao *= i; //multiplicamos os valores de i e armazenamos na variável multiplicação
+
+            //criamos esta estrutura condicional para imprimir o resultado conforme foi solicitado no exercício.
+            if (i != 1) { //se o i tiver o valor diferente de 1
+                System.out.print(i + "."); //imprima o valor do i seguido de "."
+            } else { //se não (se o i tiver o valor igual a 1)
+                //imprima o valor do i seguido do sinal "=" e o resultado da multiplicação
+                System.out.print(i + "=" + (multiplicacao));
+            }
+        }
+    }
+}
+
+
+
+👣    MaiorEMedia.java
+
+/*
+Faça um programa que leia 5 números
+e informe o maior número
+e a média desses números.
+*/
+import java.util.Scanner;
+
+public class MaiorEMedia {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in); //Abertura da entrada de fluxo de dados através do teclado
+
+        //variáveis
+        double maior = 0; //guarda o maior número
+        double soma = 0; //guarda a soma
+        double media; //guarda a média
+
+        int count = 0; //controla o loop
+        //loop
+        do {
+            System.out.println("Número: "); //Peça um número
+            double numero = scan.nextDouble(); //Entrada de dados, neste caso de um Double.
+
+            if (numero > maior) { //Caso o valor que o usuário digitou seja maior que o valor armazanado na variável maior.
+                maior = numero; //atribua o valor deste número a variável maior.
+            }
+
+            soma = soma + numero; //some o número informado pelo usuário com variável soma (independente do valor)
+
+            count = count + 1; //some o valor 1 ao contador, até que invalide a condição do loop. (count < 5)
+        } while (count < 5); //enquanto o contador tiver o valor menor que 5
+
+        media = soma / 5; //faça o cálculo da média. (soma/quantidade)
+
+        //imprimindo o maior número digtados e a média dos mesmos
+        System.out.println("Maior: " + maior + " - Média: " + media);
+    }
+
+}
+
+
+👣   NomeEIdade.java
+
+import java.util.Scanner;
+
+/*
+Faça um programa que leia conjuntos de dois valores,
+o primeiro representando o nome do aluno e o segundo representando a sua idade.
+(Pare inserindo o valor 0 no campo nome)
+*/
+
+public class NomeEIdade {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+
+        //variáveis
+        String nome; //armazena o nome
+        int idade; //armazena a idade
+
+        while(true) { //Enquando o loop for verdadeiro
+            System.out.println("Nome: "); //Peça o nome
+            nome = scan.next(); //armazene esse nome na variável
+
+            if (nome.equals("0")) { //caso o nome igual a "0"
+                break; //interrompa o programa
+            }
+
+            System.out.println("Idade: "); //Peça a idade
+            idade = scan.nextInt(); //armazene a idade na variável
+
+            //imprima o nome e a idade
+            System.out.println("Nome: " + nome + " - idade: " + idade);
+        }
+    }
+}
+
+
+👣 Nota.java
+/*
+Faça um programa que peça uma nota, entre zero e dez.
+Mostre uma mensagem caso o valor seja inválido
+e continue pedindo
+até que o usuário informe um valor válido.
+*/
+import java.util.Scanner;
+
+public class Nota {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in); //Abertura da entrada de fluxo de dados através do teclado
+
+        System.out.println("Nota de 0 a 10: "); //Peça uma nota de 0 a 10
+        int nota = scan.nextInt(); //Entrada de dados, neste caso de um int
+
+        while(nota < 0 | nota > 10) { //Enquanto o valor da nota for menor que 0 ou maior que 10.
+            System.out.println("Nota Inválida!"); //Mensagem que o valor é inválido
+            System.out.println("Tente novamente. Nota: "); //Peça novamente a nota
+            nota = scan.nextInt(); //Entrada de dados, neste caso de um int
+        }
+
+        System.out.println("Nota: " + nota); //imprimindo a nota válida
+    }
+
+}
+
+👣 ParEImpar.java
+
+/*
+Faça um programa que peça N números inteiros,
+calcule e mostre a quantidade de números pares
+e a quantidade de números impares.
+*/
+import java.util.Scanner;
+
+public class ParEImpar {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in); //Abertura da entrada de fluxo de dados através do teclado
+
+        System.out.println("Quantidade de números: "); //Peça um número
+        int quantidadeDeNumeros = scan.nextInt(); //Entrada de dados, neste caso de um int.
+
+        //variáveis para guardar a quantidade dos números pares e ímpares
+        int quantPar = 0, quantImpar = 0;
+
+        int count = 0; //controla o loop
+        //loop
+        do { //primeiro, independente do que tem no while, faça:
+            System.out.println("Número: "); //Peça um número
+            int numero = scan.nextInt(); //Entrada de dados, neste caso de um int.
+
+            //se o resto da divisão do número por 2 (numero/2) for 0,
+            if (numero % 2 == 0) quantPar++; //acrescente o valor 1 a variável quantPar.
+                //caso contrário, o número digitado é ímpar
+            else quantImpar++; //adicione o valor 1 a variável quantImpar.
+
+            count++; //some o valor 1 ao contador até que invalide a condição do loop. (count < quantidadeDeNumeros)
+        } while (count < quantidadeDeNumeros);
+        // Faça o loop caso o valor do contador seja menor que a quantidade de números
+
+        //imprimindo a quantidade de números pares digtados e números ímpares digitados
+        System.out.println("Quantidade números pares: " + quantPar + " / Quantidade números ímpares: " + quantImpar);
+    }
+}
+
+👣 Tabuada.java
+
+/*
+Desenvolva um gerador de tabuada,
+capaz de gerar a tabuada de qualquer número inteiro entre 1 a 10.
+O usuário deve informar de qual numero ele deseja ver a tabuada.
+A saída deve ser conforme o exemplo abaixo:
+Tabuada de 5:
+5 X 1 = 5
+5 X 2 = 10
+...
+5 X 10 = 50
+*/
+import java.util.Scanner;
+
+public class Tabuada {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in); //Abertura da entrada de fluxo de dados através do teclado
+
+        System.out.println("Número: "); //Peça um número
+        int numero = scan.nextInt(); //Entrada de dados, neste caso de um int.
+
+        System.out.println("Tabuada de " + numero + ":");//frase ilustrativa para indicar a tabuada
+
+        //para: variável i = 0, até i menor ou igual a 10, adicionando 1 ao valor de i a cada loop.
+        for (int i = 0; i <= 10; i = i + 1) {
+            //número escolhido pelo usuário "X" o valor de i "=" a multiplicação do número com o i.
+            System.out.println(numero + " X " + i + " = " + (numero * i));
+        }
+    }
+}
+
+✅    Ex1_NomeEIdade.java
+  
+
+import java.util.Scanner;
+
+/*
+Faça um programa que leia conjuntos de dois valores,
+o primeiro representando o nome do aluno e o segundo representando a sua idade.
+(Pare o programa inserindo o valor 0 no campo nome)
+*/
+public class Ex1_NomeEIdade {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+
+        String nome;
+        int idade;
+
+        while(true) {
+            System.out.println("Nome: ");
+            nome = scan.next();
+            if (nome.equals("0")) break;
+
+            System.out.println("Idade: ");
+            idade = scan.nextInt();
+        }
+
+        System.out.println("Continua aqui...");
+
+    }
+
+}
+
+✅Ex2_Nota.java
+
+import java.util.Scanner;
+
+/*
+Faça um programa que peça uma nota, entre zero e dez.
+Mostre uma mensagem caso o valor seja inválido
+e continue pedindo
+até que o usuário informe um valor válido.
+*/
+public class Ex2_Nota {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+
+        int nota;
+
+        System.out.println("Nota: ");
+        nota = scan.nextInt();
+
+        while(nota < 0 | nota > 10) {
+            System.out.println("Nota Inválida! Digite novamente: ");
+            nota = scan.nextInt();
+        }
+
+    }
+
+}
+
+✅  Ex3_MaiorEMedia.java
+
+import java.util.Scanner;
+
+/*
+Faça um programa que leia 5 números
+e informe o maior número
+e a média desses números.
+*/
+public class Ex3_MaiorEMedia {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+
+        int numero;
+        int maior = 0;
+        int soma = 0;
+
+        int count = 0;
+        do {
+            System.out.println("Número: ");
+            numero = scan.nextInt();
+
+            soma = soma + numero;
+
+            if (numero > maior) maior = numero;
+
+            count = count + 1;
+        } while(count < 5);
+
+        System.out.println("Maior: " + maior);
+        System.out.println("Média: " + (soma/5));
+
+    }
+}
+
+✅  Ex4_ParEImpar.java
+
+import java.util.Scanner;
+
+/*
+Faça um programa que peça N números inteiros,
+calcule e mostre a quantidade de números pares
+e a quantidade de números impares.
+*/
+public class Ex4_ParEImpar {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+
+        int quantNumeros;
+        int numero;
+        int quantPares = 0, quantImpares = 0;
+
+        System.out.println("Quantidade de números: ");
+        quantNumeros = scan.nextInt();
+
+        int count = 0;
+        do {
+            System.out.println("Número: ");
+            numero = scan.nextInt();
+
+            if (numero % 2 == 0 ) quantPares++;
+            else quantImpares++;
+
+            count++;
+        } while(count < quantNumeros);
+
+        System.out.println("Quantidade Par: " + quantPares);
+        System.out.println("Quantidade Ímpar: " + quantImpares);
+    }
+}
+✅ Ex5_Tabuada.java
+
+import java.util.Scanner;
+
+/*
+Desenvolva um gerador de tabuada,
+capaz de gerar a tabuada de qualquer número inteiro entre 1 a 10.
+O usuário deve informar de qual numero ele deseja ver a tabuada.
+A saída deve ser conforme o exemplo abaixo:
+Tabuada de 5:
+5 X 1 = 5
+5 X 2 = 10
+...
+5 X 10 = 50
+*/
+public class Ex5_Tabuada {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("Tabuada: ");
+        int tabuada = scan.nextInt();
+
+        System.out.println("Tabuada de " + tabuada);
+        for(int i = 1; i <= 10; i = i + 1) {
+            System.out.println(tabuada + " X " + i + " = " + (tabuada*i));
+        }
+    }
+
+}
+
+✅Ex6_Fatorial.java
+import java.util.Scanner;
+
+/*
+Faça um programa que calcule o fatorial de um número inteiro fornecido pelo usuário.
+Ex.: 5!= 120 (5 X 4 X 3 X 2 X 1)
+*/
+public class Ex6_Fatorial {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("Fatorial: ");
+        int fatorial = scan.nextInt();
+
+        int multiplicacao = 1;
+
+        System.out.print(fatorial +"! = ");
+        for(int i = fatorial ; i >= 1 ; i --) {
+            multiplicacao = multiplicacao * i;
+        }
+
+        System.out.println(multiplicacao);
+    }
+
+}
+
+             🛑comentado  Arrays
+
+🔷  👣 ArrayMultidimensional.java
+
+import java.util.Random;
+/*
+Gere e imprima uma matriz M 4x4 com valores aleatórios entre 0-9.
+Após isso determine o menor número da matriz e a sua posição(linha, coluna).
+*/
+public class ArrayMultidimensional {
+    public static void main(String[] args) {
+        Random random = new Random(); //classe para gerar números aleatórios
+
+        int[][] M = new int[4][4]; //declaração de uma matriz multidimensional
+
+        //variáveis
+        int menor = Integer.MIN_VALUE; //variável que guarda o menor valor
+        int linha = 0, coluna = 0; //posição inicial da linha e da coluna
+
+        //para: variável i = 0, até i menor que o tamanho da matriz (array multidimencional), acrescentamos 1 ao valor de i a cada loop.
+        for (int i = 0; i < M.length; i++) { //navegando na matriz
+            //para: variável j = 0, até i menor que o tamanho da linha, acrescentamos 1 ao valor de i a cada loop.
+            for (int j = 0; j < M[i].length; j++) { //navegando na linha (array unidimensional)
+                M[i][j] = random.nextInt(9); //atribuindo um número aleatóriamente a posição do elemento
+
+                //se o elemento em uma determinada posição (linha e coluna) é menor que o menor número
+                if (M[i][j] < menor) {
+                    menor = M[i][j]; //o valor da variável menor passa a ser o valor aleatório
+                    linha = i; //que está na linha representada pela variável i
+                    coluna = j; //que esta na coluna representada pela variável j
+                }
+            }
+        }
+        System.out.println("Menor: " + menor); //menor valor
+        System.out.println("Linha: " + linha); //linha que se encontra o menor valor
+        System.out.println("Coluna: " + coluna); //coluna que se encontra o menor valor
+
+        System.out.println("\nMatriz"); //Mensagem ilustrativa
+        for (int[] linhaM: M) { //para cada linha da matriz M
+            for (int colunaM : linhaM) { //pegue a coluna desta linhaM
+                System.out.print(colunaM + " "); //imprima esta coluna
+            }
+            System.out.println(); //pular uma linha
+        }
+    }
+}
+
+🔷  👣Consoantes.java
+/*
+Faça um Programa que leia um vetor de 6 caracteres,
+e diga quantas consoantes foram lidas.
+Imprima as consoantes.
+*/
+import java.util.Scanner;
+
+public class Consoantes {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in); //Abertura da entrada de fluxo de dados através do teclado
+        String[] consoantes = new String[6]; //iniciando um arrays vazio com 6 posições
+
+        int count = 0; //controla o loop
+        int quantidadeDeConsoantes = 0;
+
+        //loop
+        do {
+            System.out.print("Letra: "); //Peça uma letra
+            String letra = scan.next(); //capture essa letra e atrubua a variável letra.
+
+            //se a letra informada não seja igual a a, e, i, o ou u
+            if (!(letra.equalsIgnoreCase("a") |
+                    letra.equalsIgnoreCase("e") |
+                    letra.equalsIgnoreCase("i") |
+                    letra.equalsIgnoreCase("o") |
+                    letra.equalsIgnoreCase("u"))) {
+                //atribua a letra ao elemento do vetor na posição indicada pelo contador, caso seja consoante.
+                consoantes[count] = letra;
+                quantidadeDeConsoantes++;
+            }
+            count++; //acrescente o valor 1 ao contador a cada loop
+        } while (count < consoantes.length); //enquanto o contador tiver o valor menor que o tamanho do array
+
+        System.out.print("Consoantes: "); //frase ilustrativa
+        for (String consoante : consoantes) { //para cada consoante dentro do array consoantes
+            if (consoante != null) //se o valor da consoante for diferente de null
+                System.out.print(consoante + " "); //imprima a consoante
+        }
+        System.out.println("Quantidade de consoantes: " + quantidadeDeConsoantes);
+    }
+}
+
+🔷  👣  NumerosAleatorios.java
+
+import java.util.Random;
+/*
+Faça um Programa que leia 20 números inteiros (entre 0 e 100) armazene-os num vetor.
+Ao final mostre os números e seus sucessores.
+*/
+public class NumerosAleatorios {
+    public static void main(String[] args) {
+        Random random = new Random(); //classe para gerar números aleatórios
+
+        int[] numeros = new int[20]; //array com 20 posições
+
+        //para: variável i = numero, até i menor que o tamanho do array, acrescentamos 1 ao valor de i a cada loop.
+        for (int i = 0; i < numeros.length; i++) {
+            int numero = random.nextInt(100); //pegando um número aleatório entre 0 e 100.
+            numeros[i] = numero; //atribuindo esse valor ao elemento na respectiva posição do array numeros.
+        }
+
+        System.out.print("Numeros: "); //frase ilustrativa
+        //loop for-each
+        for (int numero : numeros) { //para cada numero dentro do array de números
+            System.out.print(numero + " "); //imprima o número
+        }
+
+        System.out.println("\n-----------------"); //separar os vetores
+
+        System.out.print("Sucessores: "); //frase ilustrativa
+        for (int numero : numeros) { //para cada numero dentro do array de números
+            System.out.print((numero + 1) + " "); //adicione o valor 1 ao número e imprima esse novo valor
+        }
+    }
+}
+
+🔷  👣  OrdemInversa.java
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+
+/*
+Crie um vetor de 6 números inteiros
+e mostre-os na ordem inversa.
+*/
+public class OrdemInversa {
+    public static void main(String[] args) {
+        int[] vetor = {5, 8, 9, 6, 11, -1}; //inicializando um vetor com 5 elementos.
+
+        int count = (vetor.length - 1); //o contador deverá ser um número menor que o tamanho do vetor.
+        System.out.print("Vetor Inverso: "); //Frase ilustrativa
+        //loop
+        while (count >= 0) { //enquanto o contador tiver o valor maior ou igual 0
+            System.out.print(vetor[count] + " "); //imprima o valor do elemento do vetor na posição indicada pelo contador.
+            count--; //diminua o valor 1 do contador a cada loop
+        }
+
+        System.out.println("\n--------------"); //separar os vetores
+
+        System.out.print("Vetor: "); //Frase ilustrativa
+        //loop for-each
+        for (int elemento : vetor) { //para cada elemento dentro do vetor
+            System.out.print(elemento + " "); //imprima o elemento
+        }
+    }
+}
+
+🔷  👣anotacao.txt 
+
+
+nada
+
+              🛑🛑   Ex1_OrdemInversa.java
+
+/*
+Crie um vetor de 6 números inteiros
+e mostre-os na ordem inversa.
+*/
+public class Ex1_OrdemInversa {
+    public static void main(String[] args) {
+
+        int[] vetor = {-5, -6, 15, 50, 8, 4};
+
+        //System.out.println(vetor.length);
+
+        System.out.print("Vetor: ");
+        int count =0;
+        while(count < (vetor.length)) {
+            System.out.print(vetor[count] + " ");
+            count++;
+        }
+
+        System.out.print("\nVetor: ");
+        for(int i = (vetor.length - 1); i >= 0; i --) {
+            System.out.print(vetor[i] + " ");
+        }
+
+    }
+}
+
+
+      🛑🛑   Ex2_Consoantes.java
+
+/*
+Faça um Programa que leia um vetor de 6 caracteres,
+e diga quantas consoantes foram lidas.
+Imprima as consoantes.
+*/
+
+import java.util.Scanner;
+
+public class Ex2_Consoantes {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+
+        String[] consoantes = new String[6];
+        int quantidadeConsoantes = 0;
+
+        int count = 0;
+        do {
+            System.out.println("Letra: ");
+            String letra = scan.next();
+
+            if ( !(letra.equalsIgnoreCase("a") |
+                    letra.equalsIgnoreCase("e") |
+                    letra.equalsIgnoreCase("i") |
+                    letra.equalsIgnoreCase("o") |
+                    letra.equalsIgnoreCase("u")) )  {
+                consoantes[count] = letra;
+                quantidadeConsoantes++;
+            }
+
+            count++;
+
+        } while(count < consoantes.length);
+
+        System.out.print("Consoantes: ");
+        for ( String consoante  :  consoantes ) {
+            if ( consoante != null)
+                System.out.print(consoante + " ");
+        }
+        System.out.println("Quantidade de consoantes: " + quantidadeConsoantes);
+        System.out.println(consoantes.length);
+
+    }
+
+}
+
+       🛑🛑  Ex3_NumerosAleatorios.java
+
+import java.util.Random;
+
+/*
+Faça um Programa que leia 20 números inteiros aleatórios (entre 0 e 100) armazene-os num vetor.
+Ao final mostre os números e seus sucessores.
+*/
+public class Ex3_NumerosAleatorios {
+    public static void main(String[] args) {
+        Random random = new Random();
+
+        int[] numerosAleatorios = new int[20];
+
+        for(int i = 0; i < numerosAleatorios.length; i++) {
+            int numero = random.nextInt(100);
+            numerosAleatorios[i] = numero;
+        }
+
+        System.out.print("Numeros Aleatorios: ");
+        for (int numero : numerosAleatorios) {
+            System.out.print(numero + " ");
+        }
+
+        System.out.print("\nAntecessor dos Numeros Aleatorios: ");
+        for (int numero : numerosAleatorios) {
+            System.out.print((numero-1) + " ");
+        }
+
+        System.out.print("\nSucessores dos Numeros Aleatorios: ");
+        for (int numero : numerosAleatorios) {
+            System.out.print((numero+1) + " ");
+        }
+
+
+
+
+    }
+
+}
+
+🛑🛑 Ex4_ArrayMultidimensional.java
+
+import java.util.Random;
+
+/*
+Gere e imprima uma matriz M 4x4 com valores aleatórios entre 0-9.
+*/
+public class Ex4_ArrayMultidimensional {
+    public static void main(String[] args) {
+        Random random = new Random();
+
+        int[][] M = new int[4][4];
+
+        for(int i = 0; i < M.length; i++) {
+            for( int j = 0; j < M[i].length; j++) {
+                M[i][j] = random.nextInt(9);
+            }
+        }
+
+        System.out.println("Matriz: ");
+        for (int[] linha : M  ) {
+            for (int coluna : linha ) {
+                System.out.print(coluna + " ");
+            }
+            System.out.println();
+        }
+
+    }
+
+
+}
+
+
+
